@@ -1,0 +1,4 @@
+C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/native_app_glue.dir
+C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/native-activity.dir
+C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/edit_cache.dir
+C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/rebuild_cache.dir

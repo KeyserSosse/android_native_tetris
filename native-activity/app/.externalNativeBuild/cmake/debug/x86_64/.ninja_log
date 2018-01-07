@@ -1,0 +1,16 @@
+# ninja log v5
+1	752	0	CMakeFiles/native_app_glue.dir/C_/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c.o	df76c0195a4b376b
+753	1196	0	libnative_app_glue.a	e72130177f6de4c8
+1196	2186	0	CMakeFiles/native-activity.dir/main.cpp.o	bde28e120807d71c
+1508	2228	0	CMakeFiles/native-activity.dir/util.cpp.o	9904fb831ef71572
+1829	2577	0	CMakeFiles/native-activity.dir/renderer.cpp.o	c739371cf01f13ca
+2578	3054	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86_64/libnative-activity.so	4229afdb5e93aa2e
+3	980	0	CMakeFiles/native-activity.dir/main.cpp.o	bde28e120807d71c
+980	1425	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86_64/libnative-activity.so	4229afdb5e93aa2e
+3	984	0	CMakeFiles/native-activity.dir/main.cpp.o	bde28e120807d71c
+984	1425	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86_64/libnative-activity.so	4229afdb5e93aa2e
+3	1031	0	CMakeFiles/native-activity.dir/main.cpp.o	bde28e120807d71c
+317	1099	0	CMakeFiles/native-activity.dir/renderer.cpp.o	c739371cf01f13ca
+1099	1568	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86_64/libnative-activity.so	4229afdb5e93aa2e
+2	978	0	CMakeFiles/native-activity.dir/main.cpp.o	bde28e120807d71c
+979	1435	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86_64/libnative-activity.so	4229afdb5e93aa2e
