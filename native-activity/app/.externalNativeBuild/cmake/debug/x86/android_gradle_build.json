@@ -2,12 +2,12 @@
 {
 	"buildFiles" : 
 	[
-		"C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/CMakeLists.txt"
+		"C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/CMakeLists.txt"
 	],
 	"cFileExtensions" : [ "c" ],
 	"cleanCommands" : 
 	[
-		"C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\Jon\\android-ndk\\native-activity\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target clean"
+		"C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\jon\\dev\\android\\android_native_tetris\\native-activity\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target clean"
 	],
 	"cppFileExtensions" : [ "cpp" ],
 	"libraries" : 
@@ -16,63 +16,63 @@
 		{
 			"abi" : "x86",
 			"artifactName" : "native-activity",
-			"buildCommand" : "C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\Jon\\android-ndk\\native-activity\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target native-activity",
+			"buildCommand" : "C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\jon\\dev\\android\\android_native_tetris\\native-activity\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target native-activity",
 			"buildType" : "debug",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\x86\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -O0 -fno-limit-debug-info  -fPIC    -c ",
-					"src" : "C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/main.cpp",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/x86"
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\x86\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/main.cpp",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/x86"
 				},
 				
 				{
-					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\x86\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -O0 -fno-limit-debug-info  -fPIC    -c ",
-					"src" : "C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/util.cpp",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/x86"
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\x86\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/util.cpp",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/x86"
 				},
 				
 				{
-					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\x86\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -O0 -fno-limit-debug-info  -fPIC    -c ",
-					"src" : "C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/TetrisGame.cpp",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/x86"
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\x86\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/TetrisGame.cpp",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/x86"
 				},
 				
 				{
-					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\x86\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -O0 -fno-limit-debug-info  -fPIC    -c ",
-					"src" : "C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/renderer.cpp",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/x86"
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\x86\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/renderer.cpp",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/x86"
 				}
 			],
-			"output" : "C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86/libnative-activity.so",
-			"toolchain" : "3813410877"
+			"output" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/build/intermediates/cmake/debug/obj/x86/libnative-activity.so",
+			"toolchain" : "2757431805"
 		},
 		"native_app_glue-Debug-x86" : 
 		{
 			"abi" : "x86",
 			"artifactName" : "native_app_glue",
-			"buildCommand" : "C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\Jon\\android-ndk\\native-activity\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target native_app_glue",
+			"buildCommand" : "C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\jon\\dev\\android\\android_native_tetris\\native-activity\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target native_app_glue",
 			"buildType" : "debug",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot   -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
-					"src" : "C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/x86"
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot   -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/x86"
 				}
 			],
-			"output" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/x86/libnative_app_glue.a",
-			"toolchain" : "3813410877"
+			"output" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/x86/libnative_app_glue.a",
+			"toolchain" : "2757431805"
 		}
 	},
 	"toolchains" : 
 	{
-		"3813410877" : 
+		"2757431805" : 
 		{
-			"cCompilerExecutable" : "C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
-			"cppCompilerExecutable" : "C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+			"cCompilerExecutable" : "C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable" : "C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
 		}
 	}
 }

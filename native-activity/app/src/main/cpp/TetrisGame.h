@@ -6,24 +6,23 @@
 #define NATIVE_ACTIVITY_TETRISGAME_H
 
 
+
 #include <array>
 #include <iostream>
 #include <string>
 #include <sstream>
 
+namespace tetris {
+
 constexpr size_t nrows = 16;
 constexpr size_t ncols = 9;
 
-//template<size_t R, size_t C>
-class TetrisGame {
-public:
-    using Grid = std::array<std::array<size_t,ncols>,nrows>;
+using Grid = std::array<std::array<size_t,ncols>,nrows>;
+using Item = std::array<int,8>;
 
-    TetrisGame() {
-        for(auto& r : m_grid) {
-            r.fill(0);
-        }
-    }
+class Game {
+public:
+    Game();
 
     std::string print_grid() const {
         std::stringstream ss;
@@ -43,16 +42,20 @@ public:
 
     void update();
 
-    const Grid grid() { return m_grid; }
-    const size_t x() { return m_xpos; }
-    const size_t y() { return m_ypos; }
+    const Grid& grid() const { return m_grid; }
+    const Item& item() const { return m_item; }
+    const size_t x() const { return m_xpos; }
+    const size_t y() const { return m_ypos; }
 
 private:
-    Grid m_grid;
+    Grid    m_grid;
+    Item    m_item;
+    size_t  m_col;
 
-    int m_xpos {4};
-    int m_ypos {15};
+    int     m_xpos {4};
+    int     m_ypos {15};
 };
 
+} // namespace tetris
 
 #endif //NATIVE_ACTIVITY_TETRISGAME_H

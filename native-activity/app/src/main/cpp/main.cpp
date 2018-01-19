@@ -27,6 +27,8 @@
 #include <android/log.h>
 #include <android_native_app_glue.h>
 
+#include <vector>
+
 #include "renderer.h"
 #include "TetrisGame.h"
 
@@ -34,7 +36,10 @@
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "native-activity", __VA_ARGS__))
 
 auto g_renderer = RendererES3();
-auto g_tetris_game = TetrisGame();
+auto g_tetris_game = tetris::Game();
+
+void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x, int y, size_t col);
+
 /**
  * Our saved state data.
  */
@@ -171,8 +176,8 @@ static void engine_draw_frame(struct engine* engine) {
         return;
     }
 
-    g_renderer.render(g_tetris_game.x(), g_tetris_game.y());
-
+    //g_renderer.render(g_tetris_game.x(), g_tetris_game.y());
+    draw_grid(g_renderer,g_tetris_game.grid(), g_tetris_game.item(),g_tetris_game.x(), g_tetris_game.y(), 1);
     // Just fill the screen with a color.
 //    glClearColor(((float)engine->state.x)/engine->width, engine->state.angle,
 //                 ((float)engine->state.y)/engine->height, 1);
@@ -360,3 +365,30 @@ void android_main(struct android_app* state) {
     }
 }
 //END_INCLUDE(all)
+
+
+void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x, int y, size_t col) {
+    std::vector<size_t> indices;
+    std::vector<size_t> colors;
+
+    for (size_t i = 0; i < tetris::nrows; ++i) {
+        for (size_t j = 0; j < tetris::ncols; ++j) {
+            size_t col = grid[i][j];
+            if(col) {
+                indices.push_back(i * tetris::ncols + j);
+                colors.push_back(grid[i][j]);
+            }
+        }
+    }
+
+    // Temporary, draw current piece
+    for (size_t i = 0; i < 8; i += 2) {
+        int xp = x + item[i];
+        int yp = y + item[i + 1];
+
+        indices.push_back(yp * tetris::ncols + xp);
+        colors.push_back(col);
+    }
+
+    renderer.draw_instances(indices,colors);
+}

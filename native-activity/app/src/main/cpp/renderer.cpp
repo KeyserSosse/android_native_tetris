@@ -217,39 +217,8 @@ void RendererES3::calcSceneParams(unsigned int w, unsigned int h,
     ALOGV("mScale[%u] = %f",minor,0.5f * CELL_SIZE * scene2clip[1]);
 }
 
-//auto g_t0 = std::chrono::high_resolution_clock::now();
-//static float elapsed = 0.f;
-//constexpr float time_step = 500;
-//int frames = 0;
-//int y_pos = 15;
-//void RendererES3::step() {
-//    auto t1 = std::chrono::high_resolution_clock::now();
-//    auto dT = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - g_t0).count();
-//    elapsed += dT;
-//    frames++;
-//    if(elapsed > time_step) {
-//        elapsed = elapsed - time_step;
-//
-//        y_pos -= 1;
-//        if(y_pos < 0) { y_pos = 15; }
-//
-//        //ALOGV("FPS: %f, y_pos = %u", frames * 2.f,y_pos);
-//
-//        frames = 0;
-//    }
-//
-//    g_t0 = t1;
-//}
-
-void RendererES3::render(int xpos, int ypos) {
-    //step();
-    int n_instances = 6;
-
-    int indices[] = {3, 15, 25, 17, 35, 2};
-    int color_indices[] = {2, 0, 1, 1, 0, 0};
-
-    int current_idx = ypos * 9 + xpos;
-
+void RendererES3::draw_instances(const std::vector<size_t>& indices, const std::vector<size_t>& colors) {
+    auto n_instances = indices.size();
 
     auto offsets = mapOffsetBuf();
     if(offsets == nullptr) {
@@ -261,33 +230,24 @@ void RendererES3::render(int xpos, int ypos) {
             offsets[i * 2] = m_offsets[indices[i] * 2];
             offsets[i * 2 + 1] = m_offsets[indices[i] * 2 + 1];
         }
-
-        // Draw current piece
-        offsets[2 * n_instances] = m_offsets[current_idx * 2];
-        offsets[2 * n_instances + 1] = m_offsets[current_idx * 2 + 1];
         unmapOffsetBuf();
     }
 
-    auto colors = mapTransformBuf();
-    if(colors == nullptr) {
+    auto color_buffer = mapTransformBuf();
+    if(color_buffer == nullptr) {
         ALOGV("colors is null");
         unmapTransformBuf();
         return;
     } else {
         for(size_t i = 0; i < n_instances; ++i) {
-            const auto p_color = color_pointers[color_indices[i]];
-            std::copy(p_color, p_color + 4, &colors[i * 4]);
+            const auto p_color = color_pointers[colors[i]];
+            std::copy(p_color, p_color + 4, &color_buffer[i * 4]);
         }
-
-        // Draw current piece
-        const auto p_color = color_pointers[0];
-        std::copy(p_color, p_color + 4, &colors[n_instances * 4]);
         unmapTransformBuf();
     }
 
     glClearColor(0.2f, 0.2f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    draw(n_instances + 1);
+    draw(n_instances);
     checkGlError("Renderer::render");
 }
-

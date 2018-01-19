@@ -2,12 +2,12 @@
 {
 	"buildFiles" : 
 	[
-		"C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/CMakeLists.txt"
+		"C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/CMakeLists.txt"
 	],
 	"cFileExtensions" : [ "c" ],
 	"cleanCommands" : 
 	[
-		"C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\Jon\\android-ndk\\native-activity\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target clean"
+		"C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\jon\\dev\\android\\android_native_tetris\\native-activity\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target clean"
 	],
 	"cppFileExtensions" : [ "cpp" ],
 	"libraries" : 
@@ -16,63 +16,63 @@
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "native-activity",
-			"buildCommand" : "C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\Jon\\android-ndk\\native-activity\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target native-activity",
+			"buildCommand" : "C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\jon\\dev\\android\\android_native_tetris\\native-activity\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target native-activity",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -Os -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/main.cpp",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -Os -DNDEBUG  -fPIC    -c ",
+					"src" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/main.cpp",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -Os -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/util.cpp",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -Os -DNDEBUG  -fPIC    -c ",
+					"src" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/util.cpp",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -Os -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/TetrisGame.cpp",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -Os -DNDEBUG  -fPIC    -c ",
+					"src" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/TetrisGame.cpp",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -Os -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/msys64/home/Jon/android-ndk/native-activity/app/src/main/cpp/renderer.cpp",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot  -Dnative_activity_EXPORTS -IC:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\android\\native_app_glue -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem C:\\Users\\jon\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=c++1z -Wall -Werror -Os -DNDEBUG  -fPIC    -c ",
+					"src" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/src/main/cpp/renderer.cpp",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
 				}
 			],
-			"output" : "C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/release/obj/armeabi-v7a/libnative-activity.so",
-			"toolchain" : "3813410877"
+			"output" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/build/intermediates/cmake/release/obj/armeabi-v7a/libnative-activity.so",
+			"toolchain" : "2757431805"
 		},
 		"native_app_glue-Release-armeabi-v7a" : 
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "native_app_glue",
-			"buildCommand" : "C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\Jon\\android-ndk\\native-activity\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target native_app_glue",
+			"buildCommand" : "C:\\Users\\Jon\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\msys64\\home\\jon\\dev\\android\\android_native_tetris\\native-activity\\app\\.externalNativeBuild\\cmake\\release\\armeabi-v7a --target native_app_glue",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot   -isystem C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG  -fPIC      -c ",
-					"src" : "C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c",
-					"workingDirectory" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot   -isystem C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=24 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c",
+					"workingDirectory" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a"
 				}
 			],
-			"output" : "C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a/libnative_app_glue.a",
-			"toolchain" : "3813410877"
+			"output" : "C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/release/armeabi-v7a/libnative_app_glue.a",
+			"toolchain" : "2757431805"
 		}
 	},
 	"toolchains" : 
 	{
-		"3813410877" : 
+		"2757431805" : 
 		{
-			"cCompilerExecutable" : "C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
-			"cppCompilerExecutable" : "C:/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+			"cCompilerExecutable" : "C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable" : "C:/Users/jon/AppData/Local/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
 		}
 	}
 }

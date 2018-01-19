@@ -1,4 +1,4 @@
-C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/native_app_glue.dir
-C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/native-activity.dir
-C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/edit_cache.dir
-C:/msys64/home/Jon/android-ndk/native-activity/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/native_app_glue.dir
+C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/native-activity.dir
+C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/msys64/home/jon/dev/android/android_native_tetris/native-activity/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/rebuild_cache.dir

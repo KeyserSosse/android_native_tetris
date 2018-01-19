@@ -1,4 +1,4 @@
-#Thu Jan 18 22:28:37 CET 2018
-base.0=C\:\\msys64\\home\\Jon\\android-ndk\\native-activity\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Fri Jan 19 15:23:01 CET 2018
+base.0=C\:\\msys64\\home\\jon\\dev\\android\\android_native_tetris\\native-activity\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

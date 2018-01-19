@@ -31,8 +31,6 @@ struct Vertex {
 };
 
 const Vertex QUAD[4] = {
-        // Square with diagonal < 2 so that it fits in a [-1 .. 1]^2 square
-        // regardless of rotation.
         {{-0.9f, -0.9f}},
         {{ 0.9f, -0.9f}},
         {{-0.9f,  0.9f}},

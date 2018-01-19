@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\msys64\home\Jon\android-ndk\native-activity\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\msys64\home\Jon\android-ndk\native-activity\app\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\msys64\home\jon\dev\android\android_native_tetris\native-activity\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\msys64\home\jon\dev\android\android_native_tetris\native-activity\app\src\debug\jniLibs"/></dataSet></merger>

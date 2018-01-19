@@ -9,6 +9,7 @@
 #include "util.h"
 
 #include <EGL/egl.h>
+#include <vector>
 
 class RendererES3 {
 public:
@@ -17,6 +18,7 @@ public:
     bool init();
     void resize(int w, int h);
     void render(int,int);
+    void draw_instances(const std::vector<size_t>& indices, const std::vector<size_t>& colors);
 
 private:
     enum {VB_INSTANCE, VB_SCALEROT, VB_OFFSET, VB_COUNT};
@@ -29,7 +31,7 @@ private:
 
 
     void calcSceneParams(unsigned int w, unsigned int h, float* offsets);
-    void step();
+
 
     const EGLContext mEglContext;
     GLuint mProgram;
