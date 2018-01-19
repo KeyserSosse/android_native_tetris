@@ -4,29 +4,29 @@
 
 #include "renderer.h"
 
-
+#include <algorithm>
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
+//#include <time.h>
+#include <chrono>
 
 #define STR(s) #s
 #define STRV(s) STR(s)
 
 #define POS_ATTRIB 0
+//#define SCALEROT_ATTRIB 1
 #define COLOR_ATTRIB 1
-#define SCALEROT_ATTRIB 2
-#define OFFSET_ATTRIB 3
+#define OFFSET_ATTRIB 2
 
 static const char VERTEX_SHADER[] =
         "#version 300 es\n"
                 "layout(location = " STRV(POS_ATTRIB) ") in vec2 pos;\n"
                 "layout(location=" STRV(COLOR_ATTRIB) ") in vec4 color;\n"
-                "layout(location=" STRV(SCALEROT_ATTRIB) ") in vec4 scaleRot;\n"
                 "layout(location=" STRV(OFFSET_ATTRIB) ") in vec2 offset;\n"
                 "out vec4 vColor;\n"
                 "void main() {\n"
-                "    mat2 sr = mat2(scaleRot.xy, scaleRot.zw);\n"
+                "    mat2 sr = mat2(0.111111, 0, 0, 0.062500);\n"
                 "    gl_Position = vec4(sr*pos + offset, 0.0, 1.0);\n"
                 "    vColor = color;\n"
                 "}\n";
@@ -41,6 +41,13 @@ static const char FRAGMENT_SHADER[] =
                 "}\n";
 
 
+static const float blue_color[] = {0.f, 0.f, 255.f, 1.f};
+static const float red_color[] = {255.f, 0.f, 0.f, 1.f};
+static const float green_color[] = {0.f, 255.f, 0.f, 1.f};
+
+static const float* color_pointers[] = { std::begin(green_color),
+                                         std::begin(red_color),
+                                         std::begin(blue_color) };
 
 RendererES3* createES3Renderer() {
     RendererES3* renderer = new RendererES3;
@@ -80,14 +87,12 @@ bool RendererES3::init() {
 
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_INSTANCE]);
     glVertexAttribPointer(POS_ATTRIB, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, pos));
-    glVertexAttribPointer(COLOR_ATTRIB, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, rgba));
     glEnableVertexAttribArray(POS_ATTRIB);
-    glEnableVertexAttribArray(COLOR_ATTRIB);
 
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_SCALEROT]);
-    glVertexAttribPointer(SCALEROT_ATTRIB, 4, GL_FLOAT, GL_FALSE, 4*sizeof(float), 0);
-    glEnableVertexAttribArray(SCALEROT_ATTRIB);
-    glVertexAttribDivisor(SCALEROT_ATTRIB, 1);
+    glVertexAttribPointer(COLOR_ATTRIB, 4, GL_FLOAT, GL_FALSE, 4*sizeof(float), 0);
+    glEnableVertexAttribArray(COLOR_ATTRIB);
+    glVertexAttribDivisor(COLOR_ATTRIB, 1);
 
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_OFFSET]);
     glVertexAttribPointer(OFFSET_ATTRIB, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0);
@@ -189,52 +194,100 @@ void RendererES3::calcSceneParams(unsigned int w, unsigned int h,
             int idx = i*ncells[1] + j;
             offsets[2*idx + major] = centers[0][i];
             offsets[2*idx + minor] = centers[1][j];
+            ALOGV("offsets[%u] =  %f", 2*idx+major, centers[0][i]);
         }
     }
+
+    std::copy(offsets, offsets + 2 * 9 * 16, std::begin(m_offsets));
 
     mNumInstances = ncells[0] * ncells[1];
     mScale[major] = 0.5f * CELL_SIZE * scene2clip[0];
     mScale[minor] = 0.5f * CELL_SIZE * scene2clip[1];
+
+    float* transforms = mapTransformBuf();
+    for (unsigned int i = 0; i < mNumInstances; i++) {
+        transforms[4*i + 0] = 0;
+        transforms[4*i + 1] = 255;
+        transforms[4*i + 2] = 0;
+        transforms[4*i + 3] = 1.f;
+    }
+    unmapTransformBuf();
+
+    ALOGV("mScale[%u] = %f",major,0.5f * CELL_SIZE * scene2clip[0]);
+    ALOGV("mScale[%u] = %f",minor,0.5f * CELL_SIZE * scene2clip[1]);
 }
 
-void RendererES3::step() {
-    timespec now;
-    clock_gettime(CLOCK_MONOTONIC, &now);
-    auto nowNs = now.tv_sec*1000000000ull + now.tv_nsec;
+//auto g_t0 = std::chrono::high_resolution_clock::now();
+//static float elapsed = 0.f;
+//constexpr float time_step = 500;
+//int frames = 0;
+//int y_pos = 15;
+//void RendererES3::step() {
+//    auto t1 = std::chrono::high_resolution_clock::now();
+//    auto dT = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - g_t0).count();
+//    elapsed += dT;
+//    frames++;
+//    if(elapsed > time_step) {
+//        elapsed = elapsed - time_step;
+//
+//        y_pos -= 1;
+//        if(y_pos < 0) { y_pos = 15; }
+//
+//        //ALOGV("FPS: %f, y_pos = %u", frames * 2.f,y_pos);
+//
+//        frames = 0;
+//    }
+//
+//    g_t0 = t1;
+//}
 
-    if (mLastFrameNs > 0) {
-        float dt = float(nowNs - mLastFrameNs) * 0.000000001f;
+void RendererES3::render(int xpos, int ypos) {
+    //step();
+    int n_instances = 6;
 
-        for (unsigned int i = 0; i < mNumInstances; i++) {
-            mAngles[i] += mAngularVelocity[i] * dt;
-            if (mAngles[i] >= TWO_PI) {
-                mAngles[i] -= TWO_PI;
-            } else if (mAngles[i] <= -TWO_PI) {
-                mAngles[i] += TWO_PI;
-            }
+    int indices[] = {3, 15, 25, 17, 35, 2};
+    int color_indices[] = {2, 0, 1, 1, 0, 0};
+
+    int current_idx = ypos * 9 + xpos;
+
+
+    auto offsets = mapOffsetBuf();
+    if(offsets == nullptr) {
+        ALOGV("offsets is null");
+        unmapOffsetBuf();
+        return;
+    } else {
+        for(size_t i = 0; i < n_instances; ++i) {
+            offsets[i * 2] = m_offsets[indices[i] * 2];
+            offsets[i * 2 + 1] = m_offsets[indices[i] * 2 + 1];
         }
 
-        float* transforms = mapTransformBuf();
-        for (unsigned int i = 0; i < mNumInstances; i++) {
-            float s = sinf(mAngles[i]);
-            float c = cosf(mAngles[i]);
-            transforms[4*i + 0] =  c * mScale[0];
-            transforms[4*i + 1] =  s * mScale[1];
-            transforms[4*i + 2] = -s * mScale[0];
-            transforms[4*i + 3] =  c * mScale[1];
+        // Draw current piece
+        offsets[2 * n_instances] = m_offsets[current_idx * 2];
+        offsets[2 * n_instances + 1] = m_offsets[current_idx * 2 + 1];
+        unmapOffsetBuf();
+    }
+
+    auto colors = mapTransformBuf();
+    if(colors == nullptr) {
+        ALOGV("colors is null");
+        unmapTransformBuf();
+        return;
+    } else {
+        for(size_t i = 0; i < n_instances; ++i) {
+            const auto p_color = color_pointers[color_indices[i]];
+            std::copy(p_color, p_color + 4, &colors[i * 4]);
         }
+
+        // Draw current piece
+        const auto p_color = color_pointers[0];
+        std::copy(p_color, p_color + 4, &colors[n_instances * 4]);
         unmapTransformBuf();
     }
 
-    mLastFrameNs = nowNs;
-}
-
-void RendererES3::render() {
-    step();
-
     glClearColor(0.2f, 0.2f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    draw(mNumInstances);
+    draw(n_instances + 1);
     checkGlError("Renderer::render");
 }
 

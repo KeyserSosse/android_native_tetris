@@ -16,7 +16,7 @@ public:
     ~RendererES3();
     bool init();
     void resize(int w, int h);
-    void render();
+    void render(int,int);
 
 private:
     enum {VB_INSTANCE, VB_SCALEROT, VB_OFFSET, VB_COUNT};
@@ -43,6 +43,11 @@ private:
     float mAngularVelocity[MAX_INSTANCES];
     uint64_t mLastFrameNs;
     float mAngles[MAX_INSTANCES];
+
+    float m_offsets[9 * 16 * 2];
+//    constexpr static int m_nrows = 16;
+//    constexpr static int m_ncols = 9;
+//    float m_offsets[m_nrows][m_ncols];
 };
 
 #endif //NATIVE_ACTIVITY_RENDERER_H

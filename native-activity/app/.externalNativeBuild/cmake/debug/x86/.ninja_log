@@ -1,16 +1,11 @@
 # ninja log v5
-1	798	0	CMakeFiles/native_app_glue.dir/C_/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c.o	2982955275b0224b
-799	1240	0	libnative_app_glue.a	fe0ae91ed250288e
-1240	2264	0	CMakeFiles/native-activity.dir/main.cpp.o	9db9f69feeb2dcd4
-1553	2269	0	CMakeFiles/native-activity.dir/util.cpp.o	dd21a7d2483b3f8
-1869	2631	0	CMakeFiles/native-activity.dir/renderer.cpp.o	b6a3c9be4fbdb6b5
-2631	3086	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86/libnative-activity.so	1086841a0aee5a87
-3	980	0	CMakeFiles/native-activity.dir/main.cpp.o	9db9f69feeb2dcd4
-980	1418	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86/libnative-activity.so	1086841a0aee5a87
-3	969	0	CMakeFiles/native-activity.dir/main.cpp.o	9db9f69feeb2dcd4
-969	1428	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86/libnative-activity.so	1086841a0aee5a87
-3	1000	0	CMakeFiles/native-activity.dir/main.cpp.o	9db9f69feeb2dcd4
-318	1073	0	CMakeFiles/native-activity.dir/renderer.cpp.o	b6a3c9be4fbdb6b5
-1074	1576	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86/libnative-activity.so	1086841a0aee5a87
-3	979	0	CMakeFiles/native-activity.dir/main.cpp.o	9db9f69feeb2dcd4
-980	1424	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86/libnative-activity.so	1086841a0aee5a87
+1	789	0	CMakeFiles/native_app_glue.dir/C_/Users/Jon/AppData/Local/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c.o	2982955275b0224b
+790	1240	0	libnative_app_glue.a	fe0ae91ed250288e
+1240	2574	0	CMakeFiles/native-activity.dir/main.cpp.o	9db9f69feeb2dcd4
+1566	2576	0	CMakeFiles/native-activity.dir/util.cpp.o	dd21a7d2483b3f8
+1897	3473	0	CMakeFiles/native-activity.dir/TetrisGame.cpp.o	3e9678ec3364767f
+2235	3746	0	CMakeFiles/native-activity.dir/renderer.cpp.o	b6a3c9be4fbdb6b5
+3746	4281	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86/libnative-activity.so	58f6f6f6fa97ae2b
+4	1378	0	CMakeFiles/native-activity.dir/main.cpp.o	9db9f69feeb2dcd4
+364	2469	0	CMakeFiles/native-activity.dir/TetrisGame.cpp.o	3e9678ec3364767f
+2469	3204	0	C:/msys64/home/Jon/android-ndk/native-activity/app/build/intermediates/cmake/debug/obj/x86/libnative-activity.so	58f6f6f6fa97ae2b

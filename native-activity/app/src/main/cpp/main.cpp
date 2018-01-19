@@ -28,13 +28,13 @@
 #include <android_native_app_glue.h>
 
 #include "renderer.h"
-
+#include "TetrisGame.h"
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "native-activity", __VA_ARGS__))
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "native-activity", __VA_ARGS__))
 
 auto g_renderer = RendererES3();
-
+auto g_tetris_game = TetrisGame();
 /**
  * Our saved state data.
  */
@@ -143,6 +143,10 @@ static int engine_init_display(struct engine* engine) {
     g_renderer.init();
     g_renderer.resize(w,h);
 
+
+    ALOGV("%s", g_tetris_game.print_grid().c_str());
+
+
     // Check openGL on the system
     auto opengl_info = {GL_VENDOR, GL_RENDERER, GL_VERSION, GL_EXTENSIONS};
     for (auto name : opengl_info) {
@@ -167,7 +171,7 @@ static void engine_draw_frame(struct engine* engine) {
         return;
     }
 
-    g_renderer.render();
+    g_renderer.render(g_tetris_game.x(), g_tetris_game.y());
 
     // Just fill the screen with a color.
 //    glClearColor(((float)engine->state.x)/engine->width, engine->state.angle,
@@ -203,10 +207,22 @@ static void engine_term_display(struct engine* engine) {
  */
 static int32_t engine_handle_input(struct android_app* app, AInputEvent* event) {
     struct engine* engine = (struct engine*)app->userData;
+
     if (AInputEvent_getType(event) == AINPUT_EVENT_TYPE_MOTION) {
+        auto action = AMotionEvent_getAction(event);
+        if(action == AMOTION_EVENT_ACTION_DOWN) {
+            ALOGV("Action Down");
+            auto x = AMotionEvent_getX(event,0);
+            ALOGV("x:%f", x);
+
+            if(x > 540) {
+                g_tetris_game.move_right();
+            } else {
+                g_tetris_game.move_left();
+            }
+        }
+
         engine->animating = 1;
-        engine->state.x = AMotionEvent_getX(event, 0);
-        engine->state.y = AMotionEvent_getY(event, 0);
         return 1;
     }
     return 0;
@@ -305,7 +321,7 @@ void android_main(struct android_app* state) {
 
             // Process this event.
             if (source != NULL) {
-                LOGI("Processing event.");
+                //LOGI("Processing event.");
                 source->process(state, source);
             }
 
@@ -336,6 +352,7 @@ void android_main(struct android_app* state) {
                 engine.state.angle = 0;
             }
 
+            g_tetris_game.update();
             // Drawing is throttled to the screen update rate, so there
             // is no need to do timing here.
             engine_draw_frame(&engine);

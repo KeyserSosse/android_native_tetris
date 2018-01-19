@@ -28,16 +28,15 @@
 
 struct Vertex {
     GLfloat pos[2];
-    GLubyte rgba[4];
 };
 
 const Vertex QUAD[4] = {
         // Square with diagonal < 2 so that it fits in a [-1 .. 1]^2 square
         // regardless of rotation.
-        {{-0.7f, -0.7f}, {0x00, 0xFF, 0x00}},
-        {{ 0.7f, -0.7f}, {0x00, 0x00, 0xFF}},
-        {{-0.7f,  0.7f}, {0xFF, 0x00, 0x00}},
-        {{ 0.7f,  0.7f}, {0xFF, 0xFF, 0xFF}},
+        {{-0.9f, -0.9f}},
+        {{ 0.9f, -0.9f}},
+        {{-0.9f,  0.9f}},
+        {{ 0.9f,  0.9f}},
 };
 
 bool checkGlError(const char* funcName);
