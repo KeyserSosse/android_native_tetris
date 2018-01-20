@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <chrono>
 #include <tuple>
+#include <random>
 
 namespace tetris {
 
@@ -24,18 +25,22 @@ bool check_collision(const Grid& grid, const Item& item, int x, int y) {
     return false;
 }
 
+static std::random_device rd;  //Will be used to obtain a seed for the random number engine
+static std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+static std::uniform_int_distribution<uint16_t> dis(0, 6);
+
 std::pair<Item,int> gen_item() {
     const static Item items[] = {
-            {{0,0, 1,0, -1,-1, 0,-1}},
-            {{0,0, 1,0, 2,0, 3,0}},
-            {{-1,0, 0,0, 0,-1, 1,-1}},
-            {{0,0, 1,0, 2,0, 2,-1}},
-            {{0,0, 1,0, 2,0, 0,-1}},
-            {{0,0, 1,0, 0,-1, 1,-1}},
-            {{0,0, 1,0, 2,0, 1,-1}},
+            {{ 0,0, 1,0, -1,-1,  0,-1}},
+            {{-1,0, 0,0,  1, 0,  2, 0}},
+            {{-1,0, 0,0,  0,-1,  1,-1}},
+            {{-1,0, 0,0,  1, 0,  1,-1}},
+            {{-1,0, 0,0,  1, 0, -1,-1}},
+            {{ 0,0, 1,0,  0,-1,  1,-1}},
+            {{-1,0, 0,0,  1, 0,  0,-1}},
     };
 
-    uint8_t type = 0;
+    auto type = dis(gen);
     return {items[type], type};
 }
 
@@ -83,6 +88,7 @@ void Game::update() {
 
             // Reset
             m_ypos = 15;
+            m_xpos = 4;
             std::tie(m_item,m_col) = gen_item();
         } else {
             m_ypos = next_y;
@@ -96,8 +102,19 @@ void Game::move_down() {
 
 }
 
-void Game::rotate() {
+Item rotate_item(const Item& item) {
+    return {{ -item[1], item[0],
+              -item[3], item[2],
+              -item[5], item[4],
+              -item[7], item[6] }};
+}
 
+void Game::rotate() {
+    auto rot = rotate_item(m_item);
+    if(check_collision(m_grid,rot,m_xpos,m_ypos)) {
+        return;
+    }
+    m_item = rot;
 }
 
 } // namespace::tetris

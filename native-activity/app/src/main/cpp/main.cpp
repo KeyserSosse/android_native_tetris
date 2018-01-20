@@ -177,7 +177,7 @@ static void engine_draw_frame(struct engine* engine) {
     }
 
     //g_renderer.render(g_tetris_game.x(), g_tetris_game.y());
-    draw_grid(g_renderer,g_tetris_game.grid(), g_tetris_game.item(),g_tetris_game.x(), g_tetris_game.y(), 1);
+    draw_grid(g_renderer,g_tetris_game.grid(), g_tetris_game.item(),g_tetris_game.x(), g_tetris_game.y(), g_tetris_game.col());
     // Just fill the screen with a color.
 //    glClearColor(((float)engine->state.x)/engine->width, engine->state.angle,
 //                 ((float)engine->state.y)/engine->height, 1);
@@ -217,13 +217,18 @@ static int32_t engine_handle_input(struct android_app* app, AInputEvent* event) 
         auto action = AMotionEvent_getAction(event);
         if(action == AMOTION_EVENT_ACTION_DOWN) {
             ALOGV("Action Down");
-            auto x = AMotionEvent_getX(event,0);
-            ALOGV("x:%f", x);
+            auto x = AMotionEvent_getX(event,0) / 1080 - 0.5;
+            auto y = AMotionEvent_getY(event,0) / 1920 - 0.5;
+            ALOGV("x:%f, y:%f", x,y);
 
-            if(x > 540) {
-                g_tetris_game.move_right();
+            if(-y > fabs(x)) {
+                g_tetris_game.rotate();
             } else {
-                g_tetris_game.move_left();
+                if(x > 0) {
+                    g_tetris_game.move_right();
+                } else {
+                    g_tetris_game.move_left();
+                }
             }
         }
 
@@ -376,7 +381,7 @@ void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::It
             size_t col = grid[i][j];
             if(col) {
                 indices.push_back(i * tetris::ncols + j);
-                colors.push_back(grid[i][j]);
+                colors.push_back(grid[i][j] - 1);
             }
         }
     }
