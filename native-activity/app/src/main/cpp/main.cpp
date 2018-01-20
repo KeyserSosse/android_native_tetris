@@ -148,10 +148,6 @@ static int engine_init_display(struct engine* engine) {
     g_renderer.init();
     g_renderer.resize(w,h);
 
-
-    ALOGV("%s", g_tetris_game.print_grid().c_str());
-
-
     // Check openGL on the system
     auto opengl_info = {GL_VENDOR, GL_RENDERER, GL_VERSION, GL_EXTENSIONS};
     for (auto name : opengl_info) {
@@ -220,8 +216,9 @@ static int32_t engine_handle_input(struct android_app* app, AInputEvent* event) 
             auto x = AMotionEvent_getX(event,0) / 1080 - 0.5;
             auto y = AMotionEvent_getY(event,0) / 1920 - 0.5;
             ALOGV("x:%f, y:%f", x,y);
-
-            if(-y > fabs(x)) {
+            if(y > fabs(x)) {
+                g_tetris_game.push_down();
+            } else if(-y > fabs(x)) {
                 g_tetris_game.rotate();
             } else {
                 if(x > 0) {
@@ -229,6 +226,10 @@ static int32_t engine_handle_input(struct android_app* app, AInputEvent* event) 
                 } else {
                     g_tetris_game.move_left();
                 }
+            }
+        } else if (action == AMOTION_EVENT_ACTION_UP) {
+            if(g_tetris_game.going_down()) {
+                g_tetris_game.release_down();
             }
         }
 

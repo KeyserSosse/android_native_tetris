@@ -25,6 +25,17 @@ bool check_collision(const Grid& grid, const Item& item, int x, int y) {
     return false;
 }
 
+void update_board(Grid& grid) {
+    for (int i = grid.size() - 1; i >= 0; --i) {
+        if(auto it = std::find(std::begin(grid[i]), std::end(grid[i]), 0); it == std::end(grid[i])) {
+            // Move all rows above 1 step down
+            for(size_t j = i; j < grid.size() - 1; ++j) {
+                grid[j] = grid[j+1];
+            }
+        }
+    }
+}
+
 static std::random_device rd;  //Will be used to obtain a seed for the random number engine
 static std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
 static std::uniform_int_distribution<uint16_t> dis(0, 6);
@@ -66,11 +77,12 @@ void Game::move_right() {
     }
     m_xpos = next_x;
 }
+
 namespace cs = std::chrono;
 auto g_t0 = cs::high_resolution_clock::now();
 void Game::update() {
     static float elapsed = 0.f;
-    constexpr float time_step = 500;
+    float time_step = m_going_down ? 100 : 500;
 
     auto t1 = cs::high_resolution_clock::now();
     auto dT = cs::duration_cast<cs::milliseconds>(t1 - g_t0).count();
@@ -86,6 +98,9 @@ void Game::update() {
                 m_grid[yp][xp] = m_col + 1;
             }
 
+            // Check for full rows and update accordingly
+            update_board(m_grid);
+
             // Reset
             m_ypos = 15;
             m_xpos = 4;
@@ -96,10 +111,6 @@ void Game::update() {
     }
 
     g_t0 = t1;
-}
-
-void Game::move_down() {
-
 }
 
 Item rotate_item(const Item& item) {
