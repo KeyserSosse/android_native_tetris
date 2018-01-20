@@ -44,10 +44,18 @@ static const char FRAGMENT_SHADER[] =
 static const float blue_color[] = {0.f, 0.f, 255.f, 1.f};
 static const float red_color[] = {255.f, 0.f, 0.f, 1.f};
 static const float green_color[] = {0.f, 255.f, 0.f, 1.f};
+static const float yellow_color[] = {255.f, 255.f, 0.f, 1.f};
+static const float cyan_color[] = {0.f, 255.f, 255.f, 1.f};
+static const float purple_color[] = {255.f, 0.f, 255.f, 1.f};
+static const float orange_color[] = {255.f, 255.f, 240.f, 1.f};
 
 static const float* color_pointers[] = { std::begin(green_color),
                                          std::begin(red_color),
-                                         std::begin(blue_color) };
+                                         std::begin(blue_color),
+                                         std::begin(yellow_color),
+                                         std::begin(cyan_color),
+                                         std::begin(purple_color),
+                                         std::begin(orange_color) };
 
 RendererES3* createES3Renderer() {
     RendererES3* renderer = new RendererES3;

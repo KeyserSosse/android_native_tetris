@@ -44,16 +44,18 @@ public:
 
     const Grid& grid() const { return m_grid; }
     const Item& item() const { return m_item; }
+    const uint16_t& col() const { return m_col; }
+
     const size_t x() const { return m_xpos; }
     const size_t y() const { return m_ypos; }
 
 private:
-    Grid    m_grid;
-    Item    m_item;
-    size_t  m_col;
+    Grid        m_grid;
+    Item        m_item;
+    uint16_t    m_col;
 
-    int     m_xpos {4};
-    int     m_ypos {15};
+    int         m_xpos {4};
+    int         m_ypos {15};
 };
 
 } // namespace tetris
