@@ -38,15 +38,13 @@ private:
     GLuint mVB[VB_COUNT];
     GLuint mVBState;
 
+    unsigned int        mNumInstances;
+    float               mScale[2];
+    float               mAngularVelocity[MAX_INSTANCES];
+    float               mAngles[MAX_INSTANCES];
 
-
-    unsigned int mNumInstances;
-    float mScale[2];
-    float mAngularVelocity[MAX_INSTANCES];
-    uint64_t mLastFrameNs;
-    float mAngles[MAX_INSTANCES];
-
-    float m_offsets[9 * 16 * 2];
+//    float               m_offsets[9 * 16 * 2];
+    std::vector<float>  m_offsets;
 //    constexpr static int m_nrows = 16;
 //    constexpr static int m_ncols = 9;
 //    float m_offsets[m_nrows][m_ncols];

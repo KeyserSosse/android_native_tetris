@@ -45,8 +45,8 @@ private:
     uint16_t    m_col;
     bool        m_going_down {false};
 
-    int         m_xpos {4};
-    int         m_ypos {15};
+    int         m_xpos {ncols / 2};
+    int         m_ypos {nrows - 1};
 };
 
 } // namespace tetris

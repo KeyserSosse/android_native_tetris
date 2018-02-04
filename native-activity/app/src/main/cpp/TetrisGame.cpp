@@ -36,9 +36,9 @@ void update_board(Grid& grid) {
     }
 }
 
-static std::random_device rd;  //Will be used to obtain a seed for the random number engine
-static std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
-static std::uniform_int_distribution<uint16_t> dis(0, 6);
+std::random_device rd; //Will be used to obtain a seed for the random number engine
+std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+std::uniform_int_distribution<uint16_t> dis(0, 6);
 
 std::pair<Item,int> gen_item() {
     const static Item items[] = {
@@ -56,10 +56,11 @@ std::pair<Item,int> gen_item() {
 }
 
 Game::Game() {
-    for(auto& r : m_grid) {
+    for (auto &r : m_grid) {
         r.fill(0);
     }
-    std::tie(m_item,m_col) = gen_item();
+
+    std::tie(m_item, m_col) = gen_item();
 }
 
 void Game::move_left() {
@@ -86,6 +87,7 @@ void Game::update() {
 
     auto t1 = cs::high_resolution_clock::now();
     auto dT = cs::duration_cast<cs::milliseconds>(t1 - g_t0).count();
+
     elapsed += dT;
     if(elapsed > time_step) {
         elapsed = elapsed - time_step;

@@ -11,6 +11,8 @@
 //#include <time.h>
 #include <chrono>
 
+#include "TetrisGame.h"
+
 #define STR(s) #s
 #define STRV(s) STR(s)
 
@@ -25,6 +27,7 @@ static const char VERTEX_SHADER[] =
                 "layout(location=" STRV(COLOR_ATTRIB) ") in vec4 color;\n"
                 "layout(location=" STRV(OFFSET_ATTRIB) ") in vec2 offset;\n"
                 "out vec4 vColor;\n"
+                "uniform vec2 scale;"
                 "void main() {\n"
                 "    mat2 sr = mat2(0.111111, 0, 0, 0.062500);\n"
                 "    gl_Position = vec4(sr*pos + offset, 0.0, 1.0);\n"
@@ -71,7 +74,7 @@ RendererES3::RendererES3()
             mProgram(0),
             mVBState(0),
             mNumInstances(0),
-            mLastFrameNs(0)
+            m_offsets(tetris::nrows * tetris::ncols * 2, 0)
 {
     for (int i = 0; i < VB_COUNT; i++)
         mVB[i] = 0;
@@ -160,11 +163,9 @@ void RendererES3::resize(int w, int h) {
 
     // Auto gives a signed int :-(
     for (auto i = (unsigned)0; i < mNumInstances; i++) {
-        mAngles[i] = drand48() * TWO_PI;
-        mAngularVelocity[i] = MAX_ROT_SPEED * (2.0*drand48() - 1.0);
+        //mAngles[i] = drand48() * TWO_PI;
+        //mAngularVelocity[i] = MAX_ROT_SPEED * (2.0*drand48() - 1.0);
     }
-
-    mLastFrameNs = 0;
 
     glViewport(0, 0, w, h);
 }
@@ -206,7 +207,8 @@ void RendererES3::calcSceneParams(unsigned int w, unsigned int h,
         }
     }
 
-    std::copy(offsets, offsets + 2 * 9 * 16, std::begin(m_offsets));
+    std::copy(offsets, offsets + 2 * tetris::ncols * tetris::nrows, std::begin(m_offsets));
+    //std::copy(offsets, offsets + 2 * 9 * 16, std::begin(m_offsets));
 
     mNumInstances = ncells[0] * ncells[1];
     mScale[major] = 0.5f * CELL_SIZE * scene2clip[0];
