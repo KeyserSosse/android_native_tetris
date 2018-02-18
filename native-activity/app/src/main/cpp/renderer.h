@@ -21,12 +21,12 @@ public:
     void draw_instances(const std::vector<size_t>& indices, const std::vector<size_t>& colors);
 
 private:
-    enum {VB_INSTANCE, VB_SCALEROT, VB_OFFSET, VB_COUNT};
+    enum {VB_INSTANCE, VB_COLOR, VB_OFFSET, VB_COUNT};
 
     float* mapOffsetBuf();
     void  unmapOffsetBuf();
-    float* mapTransformBuf();
-    void unmapTransformBuf();
+    float* mapColorBuf();
+    void unmapColorBuf();
     void draw(unsigned int numInstances);
 
 
@@ -40,14 +40,8 @@ private:
 
     unsigned int        mNumInstances;
     float               mScale[2];
-    float               mAngularVelocity[MAX_INSTANCES];
-    float               mAngles[MAX_INSTANCES];
 
-//    float               m_offsets[9 * 16 * 2];
     std::vector<float>  m_offsets;
-//    constexpr static int m_nrows = 16;
-//    constexpr static int m_ncols = 9;
-//    float m_offsets[m_nrows][m_ncols];
 };
 
 #endif //NATIVE_ACTIVITY_RENDERER_H

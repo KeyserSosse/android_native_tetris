@@ -40,7 +40,7 @@ std::random_device rd; //Will be used to obtain a seed for the random number eng
 std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
 std::uniform_int_distribution<uint16_t> dis(0, 6);
 
-std::pair<Item,int> gen_item() {
+std::tuple<Item,uint16_t,uint16_t> gen_item(uint16_t next) {
     const static Item items[] = {
             {{ 0,0, 1,0, -1,-1,  0,-1}},
             {{-1,0, 0,0,  1, 0,  2, 0}},
@@ -51,8 +51,9 @@ std::pair<Item,int> gen_item() {
             {{-1,0, 0,0,  1, 0,  0,-1}},
     };
 
-    auto type = dis(gen);
-    return {items[type], type};
+    auto type = next;
+    auto next_type = dis(gen);
+    return std::tuple(items[type], type, next_type);
 }
 
 Game::Game() {
@@ -60,7 +61,7 @@ Game::Game() {
         r.fill(0);
     }
 
-    std::tie(m_item, m_col) = gen_item();
+    std::tie(m_item, m_col,m_next_item) = gen_item(m_next_item);
 }
 
 void Game::move_left() {
@@ -106,7 +107,7 @@ void Game::update() {
             // Reset
             m_ypos = 15;
             m_xpos = 4;
-            std::tie(m_item,m_col) = gen_item();
+            std::tie(m_item,m_col,m_next_item) = gen_item(m_next_item);
         } else {
             m_ypos = next_y;
         }

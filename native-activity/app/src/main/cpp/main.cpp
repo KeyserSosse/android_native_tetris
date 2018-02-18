@@ -38,7 +38,7 @@
 auto g_renderer = RendererES3();
 auto g_tetris_game = tetris::Game();
 
-void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x, int y, size_t col);
+void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x, int y, uint16_t col, uint16_t next);
 
 /**
  * Our saved state data.
@@ -158,6 +158,8 @@ static int engine_init_display(struct engine* engine) {
 //    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     glEnable(GL_CULL_FACE);
 //    glShadeModel(GL_SMOOTH);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_DEPTH_TEST);
 
     return 0;
@@ -172,13 +174,8 @@ static void engine_draw_frame(struct engine* engine) {
         return;
     }
 
-    //g_renderer.render(g_tetris_game.x(), g_tetris_game.y());
-    draw_grid(g_renderer,g_tetris_game.grid(), g_tetris_game.item(),g_tetris_game.x(), g_tetris_game.y(), g_tetris_game.col());
-    // Just fill the screen with a color.
-//    glClearColor(((float)engine->state.x)/engine->width, engine->state.angle,
-//                 ((float)engine->state.y)/engine->height, 1);
-//    glClear(GL_COLOR_BUFFER_BIT);
-//
+    draw_grid(g_renderer,g_tetris_game.grid(), g_tetris_game.item(),g_tetris_game.x(),
+              g_tetris_game.y(), g_tetris_game.col(), g_tetris_game.next());
     eglSwapBuffers(engine->display, engine->surface);
 }
 
@@ -213,8 +210,8 @@ static int32_t engine_handle_input(struct android_app* app, AInputEvent* event) 
         auto action = AMotionEvent_getAction(event);
         if(action == AMOTION_EVENT_ACTION_DOWN) {
             ALOGV("Action Down");
-            auto x = AMotionEvent_getX(event,0) / 1080 - 0.5;
-            auto y = AMotionEvent_getY(event,0) / 1920 - 0.5;
+            auto x = AMotionEvent_getX(event,0) / engine->width - 0.5;
+            auto y = AMotionEvent_getY(event,0) / engine->height - 0.5;
             ALOGV("x:%f, y:%f", x,y);
             if(y > fabs(x)) {
                 g_tetris_game.push_down();
@@ -373,16 +370,16 @@ void android_main(struct android_app* state) {
 //END_INCLUDE(all)
 
 
-void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x, int y, size_t col) {
+void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x, int y, uint16_t col, uint16_t next) {
     std::vector<size_t> indices;
     std::vector<size_t> colors;
 
     for (size_t i = 0; i < tetris::nrows; ++i) {
         for (size_t j = 0; j < tetris::ncols; ++j) {
-            size_t col = grid[i][j];
-            if(col) {
+            size_t cell_col = grid[i][j];
+            if(cell_col) {
                 indices.push_back(i * tetris::ncols + j);
-                colors.push_back(grid[i][j] - 1);
+                colors.push_back(cell_col - 1);
             }
         }
     }
@@ -394,6 +391,26 @@ void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::It
 
         indices.push_back(yp * tetris::ncols + xp);
         colors.push_back(col);
+    }
+
+    const static tetris::Item items[] = {
+            {{ 0,0, 1,0, -1,-1,  0,-1}},
+            {{-1,0, 0,0,  1, 0,  2, 0}},
+            {{-1,0, 0,0,  0,-1,  1,-1}},
+            {{-1,0, 0,0,  1, 0,  1,-1}},
+            {{-1,0, 0,0,  1, 0, -1,-1}},
+            {{ 0,0, 1,0,  0,-1,  1,-1}},
+            {{-1,0, 0,0,  1, 0,  0,-1}},
+    };
+
+    // Draw next item
+    auto next_item = items[next];
+    for (size_t i = 0; i < 8; i += 2) {
+        auto xp = tetris::ncols - 4 + next_item[i];
+        auto yp = tetris::nrows - 2 + next_item[i + 1];
+
+        indices.push_back(yp * tetris::ncols + xp);
+        colors.push_back(7);
     }
 
     renderer.draw_instances(indices,colors);
