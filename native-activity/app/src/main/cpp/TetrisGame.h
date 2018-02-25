@@ -27,29 +27,37 @@ public:
     void move_left() ;
     void move_right();
     void rotate();
-    void push_down() {m_going_down = true;};
-    void release_down() {m_going_down = false;};
+    void push_down() { m_going_down = true; };
+    void release_down() { m_going_down = false; };
 
     void update();
 
     const Grid& grid() const { return m_grid; }
+
     const Item& item() const { return m_item; }
-    const uint16_t col() const { return m_col; }
-    const uint16_t next() const { return m_next_item; }
+    const Item& next_item() const { return m_next_item; }
+
+    const uint16_t type() const { return m_type; }
+    const uint16_t next_type() const { return m_next_type; }
+
+    const bool going_down() const { return m_going_down; }
+
     const int x() const { return m_xpos; }
     const int y() const { return m_ypos; }
-    const bool going_down() const { return m_going_down; }
+    const size_t score() const { return m_score; }
 
 private:
     Grid        m_grid;
     Item        m_item;
-    uint16_t    m_next_item;
-    uint16_t    m_col;
+    uint16_t    m_type;
+    Item        m_next_item;
+    uint16_t    m_next_type;
 
     bool        m_going_down {false};
 
     int         m_xpos {ncols / 2};
     int         m_ypos {nrows - 1};
+    size_t      m_score {0};
 };
 
 } // namespace tetris

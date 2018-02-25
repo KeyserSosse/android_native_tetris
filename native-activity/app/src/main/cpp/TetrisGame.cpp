@@ -36,11 +36,17 @@ void update_board(Grid& grid) {
     }
 }
 
-std::random_device rd; //Will be used to obtain a seed for the random number engine
-std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
-std::uniform_int_distribution<uint16_t> dis(0, 6);
+std::random_device* rd;
+std::mt19937* gen;
+std::uniform_int_distribution<uint16_t>*  dis;
 
-std::tuple<Item,uint16_t,uint16_t> gen_item(uint16_t next) {
+void init_rng() {
+    rd = new std::random_device();
+    gen = new std::mt19937( (*rd)() );
+    dis = new std::uniform_int_distribution<uint16_t>(0,6);
+}
+
+std::tuple<Item,uint16_t, Item, uint16_t> gen_item(uint16_t next) {
     const static Item items[] = {
             {{ 0,0, 1,0, -1,-1,  0,-1}},
             {{-1,0, 0,0,  1, 0,  2, 0}},
@@ -52,16 +58,19 @@ std::tuple<Item,uint16_t,uint16_t> gen_item(uint16_t next) {
     };
 
     auto type = next;
-    auto next_type = dis(gen);
-    return std::tuple(items[type], type, next_type);
+    auto next_type = (*dis)(*gen);
+    return std::tuple(items[type], type, items[next_type], next_type);
 }
 
 Game::Game() {
-    for (auto &r : m_grid) {
+    for (auto& r : m_grid) {
         r.fill(0);
     }
 
-    std::tie(m_item, m_col,m_next_item) = gen_item(m_next_item);
+    init_rng();
+    m_next_type = (*dis)(*gen);
+
+    std::tie(m_item, m_type,m_next_item,m_next_type) = gen_item(m_next_type);
 }
 
 void Game::move_left() {
@@ -89,6 +98,9 @@ void Game::update() {
     auto t1 = cs::high_resolution_clock::now();
     auto dT = cs::duration_cast<cs::milliseconds>(t1 - g_t0).count();
 
+    // Temporary
+    m_score += dT;
+
     elapsed += dT;
     if(elapsed > time_step) {
         elapsed = elapsed - time_step;
@@ -98,7 +110,7 @@ void Game::update() {
             for (size_t i = 0; i < 8; i += 2) {
                 int xp = m_xpos + m_item[i];
                 int yp = m_ypos + m_item[i + 1];
-                m_grid[yp][xp] = m_col + 1;
+                m_grid[yp][xp] = m_type + 1;
             }
 
             // Check for full rows and update accordingly
@@ -107,7 +119,7 @@ void Game::update() {
             // Reset
             m_ypos = 15;
             m_xpos = 4;
-            std::tie(m_item,m_col,m_next_item) = gen_item(m_next_item);
+            std::tie(m_item,m_type,m_next_item,m_next_type) = gen_item(m_next_type);
         } else {
             m_ypos = next_y;
         }

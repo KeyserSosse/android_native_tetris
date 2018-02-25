@@ -23,8 +23,8 @@
 static const char VERTEX_SHADER[] =
         "#version 300 es\n"
                 "layout(location = " STRV(POS_ATTRIB) ") in vec2 pos;\n"
-                "layout(location=" STRV(COLOR_ATTRIB) ") in vec4 color;\n"
-                "layout(location=" STRV(OFFSET_ATTRIB) ") in vec2 offset;\n"
+                "layout(location = " STRV(COLOR_ATTRIB) ") in vec4 color;\n"
+                "layout(location = " STRV(OFFSET_ATTRIB) ") in vec2 offset;\n"
                 "out vec4 vColor;\n"
                 "uniform vec2 scale;"
                 "void main() {\n"
@@ -50,7 +50,14 @@ static const float yellow_color[] = {255.f, 255.f, 0.f, 1.f};
 static const float cyan_color[] = {0.f, 255.f, 255.f, 1.f};
 static const float purple_color[] = {255.f, 0.f, 255.f, 1.f};
 static const float orange_color[] = {255.f, 255.f, 240.f, 1.f};
-static const float next_color[] = {255.f, 255.f, 255.f, 0.5f};
+
+static const float blue_color_transparent[] = {0.f, 0.f, 255.f, 0.5f};
+static const float red_color_transparent[] = {255.f, 0.f, 0.f, 0.5f};
+static const float green_color_transparent[] = {0.f, 255.f, 0.f, 0.5f};
+static const float yellow_color_transparent[] = {255.f, 255.f, 0.f, 0.5f};
+static const float cyan_color_transparent[] = {0.f, 255.f, 255.f, 0.5f};
+static const float purple_color_transparent[] = {255.f, 0.f, 255.f, 0.5f};
+static const float orange_color_transparent[] = {255.f, 255.f, 240.f, 0.5f};
 
 static const float* color_pointers[] = { std::begin(green_color),
                                          std::begin(red_color),
@@ -59,16 +66,16 @@ static const float* color_pointers[] = { std::begin(green_color),
                                          std::begin(cyan_color),
                                          std::begin(purple_color),
                                          std::begin(orange_color),
-                                         std::begin(next_color)};
 
-RendererES3* createES3Renderer() {
-    RendererES3* renderer = new RendererES3;
-    if (!renderer->init()) {
-        delete renderer;
-        return NULL;
-    }
-    return renderer;
-}
+                                         std::begin(green_color_transparent),
+                                         std::begin(red_color_transparent),
+                                         std::begin(blue_color_transparent),
+                                         std::begin(yellow_color_transparent),
+                                         std::begin(cyan_color_transparent),
+                                         std::begin(purple_color_transparent),
+                                         std::begin(orange_color_transparent)};
+
+
 
 RendererES3::RendererES3()
         :   mEglContext(eglGetCurrentContext()),

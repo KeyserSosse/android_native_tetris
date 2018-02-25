@@ -31,14 +31,17 @@
 
 #include "renderer.h"
 #include "TetrisGame.h"
+#include "DigitRenderer.h"
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "native-activity", __VA_ARGS__))
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "native-activity", __VA_ARGS__))
 
 auto g_renderer = RendererES3();
 auto g_tetris_game = tetris::Game();
+DigitRenderer* g_digit_renderer = nullptr;
 
-void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x, int y, uint16_t col, uint16_t next);
+void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x,
+               int y, uint16_t col, const tetris::Item& next_item, uint16_t next_type);
 
 /**
  * Our saved state data.
@@ -128,7 +131,9 @@ static int engine_init_display(struct engine* engine) {
      * ANativeWindow buffers to match, using EGL_NATIVE_VISUAL_ID. */
     eglGetConfigAttrib(display, config, EGL_NATIVE_VISUAL_ID, &format);
     surface = eglCreateWindowSurface(display, config, engine->app->window, NULL);
-    context = eglCreateContext(display, config, NULL, NULL);
+
+    EGLint attribList[] = { EGL_CONTEXT_CLIENT_VERSION, 3, EGL_NONE }; // OpenGL 3.0
+    context = eglCreateContext(display, config, NULL, attribList);
 
     if (eglMakeCurrent(display, surface, surface, context) == EGL_FALSE) {
         LOGW("Unable to eglMakeCurrent");
@@ -147,6 +152,22 @@ static int engine_init_display(struct engine* engine) {
 
     g_renderer.init();
     g_renderer.resize(w,h);
+
+    g_digit_renderer = new DigitRenderer();
+
+    GLfloat lineWidthRange[2] = {0.0f, 0.0f};
+    glGetFloatv(GL_ALIASED_LINE_WIDTH_RANGE, lineWidthRange);
+    ALOGV("Supported line width range: %f - %f", lineWidthRange[0], lineWidthRange[1]);
+
+    auto printGlString = [](const char* name, GLenum s) {
+        const char* v = (const char*)glGetString(s);
+        ALOGV("GL %s: %s\n", name, v);
+    };
+
+    printGlString("Version", GL_VERSION);
+    printGlString("Vendor", GL_VENDOR);
+    printGlString("Renderer", GL_RENDERER);
+    printGlString("Extensions", GL_EXTENSIONS);
 
     // Check openGL on the system
     auto opengl_info = {GL_VENDOR, GL_RENDERER, GL_VERSION, GL_EXTENSIONS};
@@ -175,12 +196,20 @@ static void engine_draw_frame(struct engine* engine) {
     }
 
     draw_grid(g_renderer,g_tetris_game.grid(), g_tetris_game.item(),g_tetris_game.x(),
-              g_tetris_game.y(), g_tetris_game.col(), g_tetris_game.next());
+              g_tetris_game.y(), g_tetris_game.type(), g_tetris_game.next_item(),
+              g_tetris_game.next_type());
+
+    if(g_digit_renderer) {
+        g_digit_renderer->draw_string_number(std::to_string(g_tetris_game.score()),
+                                             0.75f, 0.75f,0.05f,0.05f);
+    }
+
     eglSwapBuffers(engine->display, engine->surface);
 }
 
 
 /**
+ *
  * Tear down the EGL context currently associated with the display.
  */
 static void engine_term_display(struct engine* engine) {
@@ -367,10 +396,10 @@ void android_main(struct android_app* state) {
         }
     }
 }
-//END_INCLUDE(all)
 
 
-void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x, int y, uint16_t col, uint16_t next) {
+void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::Item& item, int x,
+               int y, uint16_t col, const tetris::Item& next_item, uint16_t next_type) {
     std::vector<size_t> indices;
     std::vector<size_t> colors;
 
@@ -393,24 +422,13 @@ void draw_grid(RendererES3& renderer, const tetris::Grid& grid, const tetris::It
         colors.push_back(col);
     }
 
-    const static tetris::Item items[] = {
-            {{ 0,0, 1,0, -1,-1,  0,-1}},
-            {{-1,0, 0,0,  1, 0,  2, 0}},
-            {{-1,0, 0,0,  0,-1,  1,-1}},
-            {{-1,0, 0,0,  1, 0,  1,-1}},
-            {{-1,0, 0,0,  1, 0, -1,-1}},
-            {{ 0,0, 1,0,  0,-1,  1,-1}},
-            {{-1,0, 0,0,  1, 0,  0,-1}},
-    };
-
     // Draw next item
-    auto next_item = items[next];
     for (size_t i = 0; i < 8; i += 2) {
         auto xp = tetris::ncols - 4 + next_item[i];
         auto yp = tetris::nrows - 2 + next_item[i + 1];
 
         indices.push_back(yp * tetris::ncols + xp);
-        colors.push_back(7);
+        colors.push_back(next_type + 7);
     }
 
     renderer.draw_instances(indices,colors);

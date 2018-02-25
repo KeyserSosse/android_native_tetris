@@ -29,7 +29,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z -Wall -Werror")
 set(CMAKE_SHARED_LINKER_FLAGS
     "${CMAKE_SHARED_LINKER_FLAGS} -u ANativeActivity_onCreate")
 
-add_library(native-activity SHARED main.cpp util.cpp TetrisGame.cpp renderer.cpp)
+add_library(native-activity SHARED main.cpp util.cpp TetrisGame.cpp renderer.cpp DigitRenderer.cpp)
 
 target_include_directories(native-activity PRIVATE
     ${ANDROID_NDK}/sources/android/native_app_glue)
@@ -40,5 +40,6 @@ target_link_libraries(native-activity
     android
     native_app_glue
     EGL
-    GLESv1_CM
     log)
+
+# GLESv1_CM
